@@ -10,6 +10,7 @@ LIBNAME = libasm.so
 SRC = 	strlen.s\
 		strchr.s\
 		strrchr.s\
+		memset.s\
 
 OBJ = $(SRC:.s=.o)
 
