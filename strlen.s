@@ -17,7 +17,7 @@ strlen:
     jmp .loop ; go to the begin of .loop
 
 .end:
-    mov rax, 0 ; set rax to rcx (rax is the return value of a function)
+    mov rax, rcx ; set rax to rcx (rax is the return value of a function)
     ret ; return to the caller
 
 section .note.GNU-stack noalloc noexec nowrite progbits
