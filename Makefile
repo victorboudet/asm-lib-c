@@ -8,6 +8,7 @@
 LIBNAME = libasm.so
 
 SRC = 	strlen.s\
+		strchr.s\
 
 OBJ = $(SRC:.s=.o)
 
@@ -34,6 +35,7 @@ clean:
 
 fclean: clean
 	$(RM) $(LIBNAME)
+	$(RM) $(TEST_PROG)
 
 re: fclean all
 
