@@ -9,22 +9,29 @@ global strrchr:function
 
 strrchr:
     mov rcx, 0
+    mov r8, 0
 
 .loop:
+    cmp byte [rdi + rcx], 0
+    je .end
     cmp [rdi + rcx], sil
     je .found
-    cmp byte [rdi + rcx], 0 // check if end string
-    je .end // if end string
     inc rcx
     jmp .loop
 
 .found:
-    cmp byte [rdi + rcx], [rdi + rcx] // check if end string
-    jne .end
+    lea r8, [rdi + rcx]
     inc rcx
     jmp .loop
 
 .end:
-    mov rax, rdi
-    add rax, rcx
+    cmp r8, 0
+    je .end_not_found
+    mov rax, r8
     ret
+
+.end_not_found:
+    mov rax, 0
+    ret
+
+section .note.GNU-stack noalloc noexec nowrite progbits

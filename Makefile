@@ -9,6 +9,7 @@ LIBNAME = libasm.so
 
 SRC = 	strlen.s\
 		strchr.s\
+		strrchr.s\
 
 OBJ = $(SRC:.s=.o)
 
