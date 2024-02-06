@@ -11,6 +11,7 @@ SRC = 	strlen.s\
 		strchr.s\
 		strrchr.s\
 		memset.s\
+		memcpy.s\
 
 OBJ = $(SRC:.s=.o)
 
