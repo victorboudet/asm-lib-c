@@ -22,18 +22,18 @@ CFLAGS = -fno-builtin -L. -lasm -Wl,-rpath,.
 ASMFLAGS = -f elf64
 LDFLAGS = -shared
 TEST_PROG = test_prog
-
+LD = ld
 
 all: $(LIBNAME)
 
 $(LIBNAME): $(OBJ)
-	$(CC) $(LDFLAGS) -o $@ $^
+	$(LD) $(LDFLAGS) -o $@ $^
 
 %.o: %.s
 	$(ASM) $(ASMFLAGS) -o $@ $<
 
 test: $(LIBNAME) main.c
-	$(CC) $(CFLAGS) main.c -o $(TEST_PROG)
+	$(LD) $(CFLAGS) main.c -o $(TEST_PROG)
 
 clean:
 	$(RM) $(OBJ)
