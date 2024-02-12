@@ -33,7 +33,8 @@ $(LIBNAME): $(OBJ)
 	$(ASM) $(ASMFLAGS) -o $@ $<
 
 test: $(LIBNAME) main.c
-	$(LD) $(CFLAGS) main.c -o $(TEST_PROG)
+	$(CC) $(CFLAGS) main.c -o $(TEST_PROG)
+	./$(TEST_PROG)
 
 clean:
 	$(RM) $(OBJ)
