@@ -41,5 +41,5 @@ NASM, GCC
 - [x] strlen :clipboard:
 - [x] strncmp :clipboard:
 - [ ] strpbrk :clipboard:
-- [ ] strrchr :clipboard:
+- [x] strrchr :clipboard:
 - [ ] strstr :clipboard:

@@ -7,13 +7,19 @@
 
 LIBNAME = libasm.so
 
-SRC = 	strlen.s\
-		strchr.s\
-		strrchr.s\
-		memset.s\
+SRC = 	\
 		memcpy.s\
+		memmove.s\
+		memset.s\
+		strcasecmp.s\
+		strchr.s\
 		strcmp.s\
+		strcspn.s\
+		strlen.s\
 		strncmp.s\
+		strpbrk.s\
+		strrchr.s\
+		strstr.s\
 
 OBJ = $(SRC:.s=.o)
 

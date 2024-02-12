@@ -9,8 +9,13 @@
 
 size_t strlen(const char *str);
 
-int main(void)
+void strlen_test(void)
 {
     printf("Strlen (should be '11') : '%zu'\n", strlen("Hello World"));
+}
+
+int main(void)
+{
+    strlen_test();
     return 0;
 }
