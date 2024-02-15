@@ -7,13 +7,19 @@
 
 LIBNAME = libasm.so
 
-SRC = 	strlen.s\
-		strchr.s\
-		strrchr.s\
-		memset.s\
+SRC = 	\
 		memcpy.s\
+		memmove.s\
+		memset.s\
+		strcasecmp.s\
+		strchr.s\
 		strcmp.s\
+		strcspn.s\
+		strlen.s\
 		strncmp.s\
+		strpbrk.s\
+		strrchr.s\
+		strstr.s\
 
 OBJ = $(SRC:.s=.o)
 
@@ -32,8 +38,9 @@ $(LIBNAME): $(OBJ)
 %.o: %.s
 	$(ASM) $(ASMFLAGS) -o $@ $<
 
-test: $(LIBNAME) main.c
-	$(LD) $(CFLAGS) main.c -o $(TEST_PROG)
+test: $(LIBNAME) tests/main.c
+	$(CC) $(CFLAGS) tests/main.c -o $(TEST_PROG)
+	./$(TEST_PROG)
 
 clean:
 	$(RM) $(OBJ)
