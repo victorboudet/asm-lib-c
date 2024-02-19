@@ -38,8 +38,12 @@ $(LIBNAME): $(OBJ)
 %.o: %.s
 	$(ASM) $(ASMFLAGS) -o $@ $<
 
-test: $(LIBNAME) tests/main.c
-	$(CC) $(CFLAGS) tests/main.c -o $(TEST_PROG)
+test: $(LIBNAME) main.c
+	$(CC) $(CFLAGS) main.c -o $(TEST_PROG)
+	./$(TEST_PROG)
+
+test_debug: $(LIBNAME) main.c
+	$(CC) main.c -o $(TEST_PROG) -g
 	./$(TEST_PROG)
 
 clean:

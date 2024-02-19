@@ -31,7 +31,7 @@ strrchr:
     ret
 
 .end_not_found:
-    mov rax, [rdi + rcx]
+    mov rax, 0
     ret
 
 section .note.GNU-stack noalloc noexec nowrite progbits
