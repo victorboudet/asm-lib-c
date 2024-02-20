@@ -25,12 +25,18 @@ strrchr:
     jmp .loop
 
 .end:
-    cmp r8, 0
-    je .end_not_found
-    mov rax, r8
+    cmp sil, 0
+    jne .end_not_found
+    lea rax, [rdi + rcx]
     ret
 
 .end_not_found:
+    cmp r8, 0
+    je .end_null
+    mov rax, r8
+    ret
+
+.end_null:
     mov rax, 0
     ret
 
