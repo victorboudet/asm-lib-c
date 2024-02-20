@@ -9,14 +9,28 @@ global memmove:function
 
 memmove:
     mov rcx, 0
+    cmp rdi, rsi
+    jle .loop
+    jmp .loop_back
 
 .loop:
     cmp rdx, rcx
-    jge .end
+    je .end
     mov al, [rsi + rcx]
     mov [rdi + rcx], al
     inc rcx
     jmp .loop
+
+.loop_back:
+    cmp rcx, rdx
+    je .end
+    mov r8, rdx
+    sub r8, rcx
+    dec r8
+    mov al, [rsi + r8]
+    mov [rdi + r8], al
+    inc rcx
+    jmp .loop_back
 
 .end:
     mov r8, 0
