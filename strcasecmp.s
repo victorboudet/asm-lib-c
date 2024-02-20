@@ -10,6 +10,14 @@ global strcasecmp:function
 strcasecmp:
     mov eax, 0
     mov rcx, 0
+    cmp rdi, rsi
+    je .test_null
+    jmp .loop
+
+.test_null:
+    cmp rdi, 0
+    mov rax, 0
+    je .end
     jmp .loop
 
 .incr:
