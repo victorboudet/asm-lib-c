@@ -28,7 +28,7 @@ strncmp:
     ret
 
 .less:
-    sub al, bl
+    sub bl, al
     movzx rax, bl
     neg rax
     ret
