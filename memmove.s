@@ -24,12 +24,17 @@ jmp .loop
 .loop_back:
 cmp rcx, rdx
 je .end
-mov al, [rsi + (rdx - rcx) - 1]
-mov [rdi + (rdx - rcx) - 1], al
+mov r8, rdx
+sub r8, rcx
+dec r8
+mov al, [rsi + r8]
+mov [rdi + r8], al
 inc rcx
 jmp .loop_back
 
 .end:
+mov r8, 0
 mov rax, rdi
 ret
+
 section .note.GNU-stack noalloc noexec nowrite progbits
