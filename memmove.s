@@ -8,39 +8,28 @@ section .text
 global memmove:function
 
 memmove:
-    cmp rsi, rdi
-    je .end
-    mov rcx, rdx
-    ja .copy_for
-    dec rcx
-    jmp .copy_back
+mov rcx, 0
+cmp rdi, rsi
+jle .loop
+jmp .loop_back
 
-.copy_for:
-    mov rcx, 0
-    cmp rdx, 0
-    jz .end
+.loop:
+cmp rdx, rcx
+je .end
+mov al, [rsi + rcx]
+mov [rdi + rcx], al
+inc rcx
+jmp .loop
 
-.for_loop:
-    mov al, [rsi + rcx]
-    mov [rdi + rcx], al
-    inc rcx
-    cmp rcx, rdx
-    jne .for_loop
-    jmp .end
-
-.copy_back:
-    cmp rcx, 0
-    jl .end
-    cmp rdx, 0
-    jz .end
-
-.back_loop:
-    mov al, [rsi + rcx]
-    mov [rdi + rcx], al
-    dec rcx
-    cmp rcx, 0
-    jne .back_loop
+.loop_back:
+cmp rcx, rdx
+je .end
+mov al, [rsi + (rdx - rcx) - 1]
+mov [rdi + (rdx - rcx) - 1], al
+inc rcx
+jmp .loop_back
 
 .end:
-    ret
+mov rax, rdi
+ret
 section .note.GNU-stack noalloc noexec nowrite progbits
