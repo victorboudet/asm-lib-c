@@ -12,7 +12,7 @@ strncmp:
 
 .loop:
     cmp rcx, rdx
-    je .equal
+    jae .equal
     mov al, [rdi + rcx]
     mov bl, [rsi + rcx]
     cmp al, bl
@@ -23,8 +23,24 @@ strncmp:
     jmp .loop
 
 .diff:
+    cmp al, bl
+    jg .sup
+    jl .inf
+    sub al, bl
+    neg al
+    movzx rax, al
+    ret
+
+.sup:
     sub al, bl
     movzx rax, al
+    ret
+
+.inf:
+    sub al, bl
+    neg al
+    movzx rax, al
+    neg rax
     ret
 
 .equal:
