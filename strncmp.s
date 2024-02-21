@@ -16,21 +16,17 @@ strncmp:
     mov al, [rdi + rcx]
     mov bl, [rsi + rcx]
     cmp al, bl
-    jg .greater
+    jne .diff
+    cmp al, 0
+    je .equal
     jl .less
     cmp al, 0
     inc rcx
     jmp .loop
 
-.greater:
+.diff:
     sub al, bl
-    movzx rax, al
-    ret
-
-.less:
-    sub bl, al
-    movzx rax, bl
-    neg rax
+    mov rax, al
     ret
 
 .equal:
