@@ -37,6 +37,7 @@ strpbrk:
 .ret_found:
     mov rax, rdi
     add rax, rcx
+    dec rax
     ret
 
 section .note.GNU-stack noalloc noexec nowrite progbits
