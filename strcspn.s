@@ -9,33 +9,37 @@ global strcspn:function
 
 strcspn:
     mov rcx, 0
-    jmp .loop
+    mov al, [rdi]
 
-.incr:
-    inc rcx
-    jmp .loop
-
-.loop:
-    mov al, [rdi + rcx]
+.start:
     cmp al, 0
     je .end
-    jmp .check
+    jmp .loop1
 
-.check:
-    mov rdx, 0
+.loop1:
+    mov dl, [rsi]
+    mov r8, 0
 
-.loop_check:
-    mov dl, [rsi + rdx]
+.loop2:
     cmp dl, 0
-    je .incr
-    cmp dl, al
-    je .end
-    inc rdx
-    jmp .loop_check
+    je .next
+    cmp al, dl
+    je .found
+    inc r8
+    mov dl, [rsi + r8]
+    jmp .loop2
 
-.end:
+.next:
+    inc rcx
+    mov al, [rdi + rcx]
+    cmp al, 0
+    jne .loop1
+
+.found:
     mov rax, rcx
     ret
 
+.end:
+    mov rax, 0
 
 section .note.GNU-stack noalloc noexec nowrite progbits
