@@ -19,14 +19,12 @@ strncmp:
     jne .diff
     cmp al, 0
     je .equal
-    jl .less
-    cmp al, 0
     inc rcx
     jmp .loop
 
 .diff:
     sub al, bl
-    mov rax, al
+    movzx rax, al
     ret
 
 .equal:
