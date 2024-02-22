@@ -20,6 +20,8 @@ SRC = 	\
 		strpbrk.s\
 		strrchr.s\
 		strstr.s\
+		rindex.s\
+		index.s\
 
 OBJ = $(SRC:.s=.o)
 
