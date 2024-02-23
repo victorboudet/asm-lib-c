@@ -22,6 +22,7 @@ SRC = 	\
 		strstr.s\
 		rindex.s\
 		index.s\
+		memfrob.s\
 
 OBJ = $(SRC:.s=.o)
 
