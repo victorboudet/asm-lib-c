@@ -5,7 +5,7 @@
 ;
 
 section .text
-global memmove:function
+global memfrob:function
 
 memfrob:
     mov rcx, 0
